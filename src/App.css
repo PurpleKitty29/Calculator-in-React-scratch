@@ -1,9 +1,11 @@
 /* Calculator */
 #Calculator{
+    padding: 20px;
+    align-content: auto;
     overflow: hidden;
     font-family: 'Times New Roman', Times, serif;
     width: 154px;
-    height: 400px; /*300px;*/
+    height: 380px; /*300px;*/
 }
 
 /* to show result */
@@ -67,4 +69,40 @@ button:hover {
     width: 65px;
     height: 35px;
     grid-column: span 2;
+}
+
+.navbar {
+    background-color: black;
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+}
+
+.linkOff {
+    background-color: black;
+    color: blue;
+    text-decoration: none;
+    border: 2px solid blue;
+    border-radius: 20px;
+    padding: 6px;
+    padding-left: 15px;
+    padding-right: 15px;
+    transition: 0.3s;
+}
+
+.linkOff:hover {
+    background-color: white;
+    color:black;
+    border-color: white;
+}
+
+.linkOn {
+    background-color: white;
+    color:black;
+    text-decoration: none;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 6px;
+    padding-left: 15px;
+    padding-right: 15px;
 }

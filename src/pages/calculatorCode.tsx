@@ -145,7 +145,6 @@ function Calculator() {
   // Calculator HTML
   return (
     <div id="Calculator">
-      <h1>Calculator</h1>
       <input type="text" id="history" value={history} readOnly/>
       <input type="text" id="display" value={display} readOnly/>
       <div id="buttons">
