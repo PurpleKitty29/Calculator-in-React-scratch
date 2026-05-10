@@ -1,108 +1,108 @@
 /* Calculator */
-#Calculator{
-    padding: 20px;
-    align-content: auto;
-    overflow: hidden;
-    font-family: 'Times New Roman', Times, serif;
-    width: 154px;
-    height: 380px; /*300px;*/
+#Calculator {
+  padding: 20px;
+  align-content: auto;
+  overflow: hidden;
+  font-family: 'Times New Roman', Times, serif;
+  width: 154px;
+  height: 380px; /*300px;*/
 }
 
 /* to show result */
 #display {
-    width: 150px;
-    padding: 2px;
-    text-align: right;
-    border-bottom: 2px solid black;
-    border-width: 0px 0px 2px 0px;
-    font-weight: bold;
-    font-size: 16px;
+  width: 150px;
+  padding: 2px;
+  text-align: right;
+  border-bottom: 2px solid black;
+  border-width: 0px 0px 2px 0px;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 /* history of the calculation */
 #history {
-    width: 150px;
-    padding: 2px;
-    color:rgb(45, 45, 45);
-    text-align: right;
-    border: none;
-    font-weight: normal;
-    font-size: 12px;
+  width: 150px;
+  padding: 2px;
+  color: rgb(45, 45, 45);
+  text-align: right;
+  border: none;
+  font-weight: normal;
+  font-size: 12px;
 }
 
 /* buttons of numbers (grid) */
 #buttons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 4px;
-    padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  padding: 10px;
 }
 
 /* button display */
 .button {
-    background-color: rgb(206, 214, 255);
-    color: darkblue;
-    font-size: 16px;
-    border: 2px solid darkblue;
-    border-radius: 4px;
-    text-align: center;
-    cursor: pointer;
-    transition-duration: 0.4s;
-    font-family: 'Times New Roman', Times, serif;
-    width: 30px;
-    height: 45px;
+  background-color: rgb(206, 214, 255);
+  color: darkblue;
+  font-size: 16px;
+  border: 2px solid darkblue;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  font-family: 'Times New Roman', Times, serif;
+  width: 30px;
+  height: 45px;
 }
 
 button:hover {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 .operator {
-    background-color: rgb(255, 198, 28);
-    color: rgb(151, 60, 0);
-    border: 2px solid rgb(151, 60, 0);
+  background-color: rgb(255, 198, 28);
+  color: rgb(151, 60, 0);
+  border: 2px solid rgb(151, 60, 0);
 }
 
 .action {
-    background-color: darkblue;
-    color: white;
-    width: 65px;
-    height: 35px;
-    grid-column: span 2;
+  background-color: darkblue;
+  color: white;
+  width: 65px;
+  height: 35px;
+  grid-column: span 2;
 }
 
 .navbar {
-    background-color: black;
-    display: flex;
-    gap: 10px;
-    padding: 20px;
+  background-color: black;
+  display: flex;
+  gap: 10px;
+  padding: 20px;
 }
 
 .linkOff {
-    background-color: black;
-    color: blue;
-    text-decoration: none;
-    border: 2px solid blue;
-    border-radius: 20px;
-    padding: 6px;
-    padding-left: 15px;
-    padding-right: 15px;
-    transition: 0.3s;
+  background-color: black;
+  color: blue;
+  text-decoration: none;
+  border: 2px solid blue;
+  border-radius: 20px;
+  padding: 6px;
+  padding-left: 15px;
+  padding-right: 15px;
+  transition: 0.3s;
 }
 
 .linkOff:hover {
-    background-color: white;
-    color:black;
-    border-color: white;
+  background-color: white;
+  color: black;
+  border-color: white;
 }
 
 .linkOn {
-    background-color: white;
-    color:black;
-    text-decoration: none;
-    border: 2px solid white;
-    border-radius: 20px;
-    padding: 6px;
-    padding-left: 15px;
-    padding-right: 15px;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  border: 2px solid white;
+  border-radius: 20px;
+  padding: 6px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
