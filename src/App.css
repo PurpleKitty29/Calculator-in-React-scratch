@@ -71,6 +71,25 @@ button:hover {
   grid-column: span 2;
 }
 
+.errorTitle {
+    color: rgb(230, 0, 50);
+    text-decoration: underline;
+}
+
+.returnButton {
+    background-color: white;
+    color: blue;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 2px solid blue;
+    width: 60px;
+    height: 25px;
+}
+
+.returnButton:hover {
+    cursor: pointer;
+}
+
 .navbar {
   background-color: black;
   display: flex;
@@ -105,4 +124,8 @@ button:hover {
   padding: 6px;
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.dizzyPic {
+    width: 200px;
 }
