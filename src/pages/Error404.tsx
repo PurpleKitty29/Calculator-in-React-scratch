@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import CVDizzy from '../images/CV-0 dizzy.png';
 import '../App.css';
 
 function Error404() {
