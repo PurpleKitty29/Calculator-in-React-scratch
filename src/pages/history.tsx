@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { AppContext } from '../App';
+import { AppContext, type AppContextType } from '../App';
 
 export const History = () => {
-  const { results } = useContext(AppContext);
+  const { results } = useContext(AppContext) as AppContextType;
 
   return (
     <div>

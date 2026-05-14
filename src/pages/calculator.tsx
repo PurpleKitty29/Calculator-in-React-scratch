@@ -1,16 +1,21 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import Buttons from '../components/buttonsCalculator';
 import '../App.css';
-import { AppContext } from '../App';
+import { AppContext, type AppContextType } from '../App';
 
 export const Calculator = () => {
   // Global Variables
-  const [display, setDisplay] = useState('');
-  const [history, setHistory] = useState('');
-  const [A, setA] = useState<number | null>(null);
-  const [operator, setOperator] = useState<string | null>(null);
-
-  const { results, setResults } = useContext(AppContext);
+  const {
+    setResults,
+    display,
+    setDisplay,
+    history,
+    setHistory,
+    A,
+    setA,
+    operator,
+    setOperator,
+  } = useContext(AppContext) as AppContextType;
 
   const buttonValues = [
     // Actions (Clear and Back)
@@ -105,6 +110,16 @@ export const Calculator = () => {
           setDisplay('Error');
           return;
         }
+
+        setResults((results: any) => {
+          return [
+            ...results,
+            {
+              calc: `${A} ${operator} ${B}`,
+              total: String(result),
+            },
+          ];
+        });
 
         setA(Number(result));
         setDisplay('');
