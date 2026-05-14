@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import CVDizzy from '../images/CV-0 dizzy.png';
 import '../App.css';
 
 function Error404() {
@@ -7,7 +6,7 @@ function Error404() {
     <div>
       <h1 className="errorTitle">404</h1>
 
-      <img src={CVDizzy} alt="dizzy" className="dizzyPic" />
+            <img src="/CV-0 dizzy.png" alt="dizzy" className="dizzyPic" />
 
       <p>Oopsie! Looks like you're looking for the void!</p>
       <p>
