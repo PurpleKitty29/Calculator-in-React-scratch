@@ -15,7 +15,7 @@ function Error404() {
       </p>
 
       <Link to="/">
-        <button className="returnButton">Return</button>
+        <button className="blueGlassButton">Return</button>
       </Link>
     </div>
   );

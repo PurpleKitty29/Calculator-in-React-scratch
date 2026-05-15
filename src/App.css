@@ -76,7 +76,7 @@ button:hover {
     text-decoration: underline;
 }
 
-.returnButton {
+.blueGlassButton {
     background-color: white;
     color: blue;
     text-decoration: none;
@@ -86,8 +86,9 @@ button:hover {
     height: 25px;
 }
 
-.returnButton:hover {
+.blueGlassButton:hover {
     cursor: pointer;
+    opacity: 1;
 }
 
 .navbar {
