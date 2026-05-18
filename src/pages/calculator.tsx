@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import Buttons from '../components/buttonsCalculator';
 import '../App.css';
 import { AppContext, type AppContextType } from '../App';
@@ -51,6 +51,52 @@ export const Calculator = () => {
     setA(null);
     setOperator(null);
   }
+
+  // Detects the input by keyboard
+  useEffect (() => {
+    function handleInput(event: KeyboardEvent) {
+      const key = event.key;
+
+      // Numbers
+      if (!isNaN(Number(key))) {
+        handleClick(key, 'number');
+      }
+      // Decimal "."
+      else if (key === '.') { // test later || key === ','
+        handleClick('.', 'number');
+      }
+      // Operators
+      else if (key === '+') {
+        handleClick('+', 'operator');
+      }
+      else if (key === '-') {
+        handleClick('-', 'operator');
+      }
+      else if (key === '*') {
+        handleClick('×', 'operator');
+      }
+      else if (key === '/') {
+        handleClick('÷', 'operator');
+      }
+      // Equal
+      else if (key === 'Enter' || key === '=') {
+        handleClick('=', 'number');
+      }
+      // Backspace and Clear (esc)
+      else if (key === 'Backspace') {
+        handleClick('Back', 'action');
+      }
+      else if (key === 'Escape') {
+        handleClick('Clear', 'action');
+      }
+    }
+
+    window.addEventListener('keydown', handleInput);
+
+    return () => {
+      window.removeEventListener('keydown', handleInput);
+    };
+  }, [display, A, operator]);
 
   // Detects the clicks
   function handleClick(val: string, type: string) {
