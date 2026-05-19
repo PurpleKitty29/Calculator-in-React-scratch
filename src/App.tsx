@@ -79,9 +79,9 @@ function App() {
     >
       <Navbar />
       <Routes>
-        <Route path="/Calculator-in-React-scratch/" element={<Calculator />} />
-        <Route path="/Calculator-in-React-scratch/history" element={<History />} />
-        <Route path="/Calculator-in-React-scratch/*" element={<Error404 />} />
+        <Route path="/" element={<Calculator />} />
+        <Route path="/history" element={<History />} />
+        <Route path="/*" element={<Error404 />} />
       </Routes>
     </AppContext.Provider>
   );
