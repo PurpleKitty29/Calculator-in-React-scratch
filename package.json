@@ -1,10 +1,11 @@
 {
-  "homepage": "https://www.calculatorinternshiptani.com",
+  "homepage": "https://PurpleKitty29.github.io/Calculator-in-React-scratch",
   "name": "react-calculator-scratch",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "react-scripts start",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "dev": "vite",
