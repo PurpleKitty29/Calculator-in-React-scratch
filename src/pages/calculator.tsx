@@ -56,6 +56,7 @@ export const Calculator = () => {
   useEffect(() => {
     function handleInput(event: KeyboardEvent) {
       const key = event.key;
+      console.log('key:', key);
 
       // Numbers
       if (!isNaN(Number(key))) {
