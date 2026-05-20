@@ -69,6 +69,8 @@ export const Calculator = () => {
 
       // Calculate if pressed =
       else if (val === '=') {
+        if (operator === null) return;
+
         if (A !== null && operator !== null && display !== '') {
           const B = Number(display);
           const result = calculateNumbers(A, B, operator);
@@ -157,6 +159,8 @@ export const Calculator = () => {
   useEffect(() => {
     function handleInput(event: KeyboardEvent) {
       const key = event.key;
+
+      if (event.repeat) return;
 
       // Numbers
       if (!isNaN(Number(key))) {
