@@ -13,9 +13,9 @@ export const History = () => {
       <button
         className="blueGlassButton"
         style={{
-          position: "absolute",
-          top: "90px",
-          right: "20px",
+          position: 'absolute',
+          top: '90px',
+          right: '20px',
         }}
         onClick={deleteHistory}
       >

@@ -53,7 +53,7 @@ export const Calculator = () => {
   }
 
   // Detects the input by keyboard
-  useEffect (() => {
+  useEffect(() => {
     function handleInput(event: KeyboardEvent) {
       const key = event.key;
 
@@ -62,20 +62,18 @@ export const Calculator = () => {
         handleClick(key, 'number');
       }
       // Decimal "."
-      else if (key === '.') { // test later || key === ','
+      else if (key === '.') {
+        // test later || key === ','
         handleClick('.', 'number');
       }
       // Operators
       else if (key === '+') {
         handleClick('+', 'operator');
-      }
-      else if (key === '-') {
+      } else if (key === '-') {
         handleClick('-', 'operator');
-      }
-      else if (key === '*') {
+      } else if (key === '*') {
         handleClick('×', 'operator');
-      }
-      else if (key === '/') {
+      } else if (key === '/') {
         handleClick('÷', 'operator');
       }
       // Equal
@@ -85,8 +83,7 @@ export const Calculator = () => {
       // Backspace and Clear (esc)
       else if (key === 'Backspace') {
         handleClick('Back', 'action');
-      }
-      else if (key === 'Escape') {
+      } else if (key === 'Escape') {
         handleClick('Clear', 'action');
       }
     }

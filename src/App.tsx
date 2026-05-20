@@ -81,7 +81,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Calculator />} />
         <Route path="/history" element={<History />} />
-        <Route path="/*" element={<Error404 />} />
+        <Route path="*" element={<Error404 />} />
       </Routes>
     </AppContext.Provider>
   );
