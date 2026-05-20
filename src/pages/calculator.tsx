@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useCallback } from 'react';
 import Buttons from '../components/buttonsCalculator';
 import '../App.css';
 import { AppContext, type AppContextType } from '../App';
@@ -52,21 +52,122 @@ export const Calculator = () => {
     setOperator(null);
   }
 
+  // Detects the clicks
+  const handleClick = useCallback(
+    (val: string, type: string) => {
+      if (display === 'Error') {
+        clearScreen();
+        return;
+      }
+
+      // Clear and Back options
+      if (val === 'Clear') {
+        clearScreen();
+      } else if (val === 'Back') {
+        setDisplay((prev) => prev.slice(0, -1));
+      }
+
+      // Calculate if pressed =
+      else if (val === '=') {
+        if (A !== null && operator !== null && display !== '') {
+          const B = Number(display);
+          const result = calculateNumbers(A, B, operator);
+
+          setResults((results: any) => {
+            return [
+              ...results,
+              {
+                calc: `${A} ${operator} ${B}`,
+                total: String(result),
+              },
+            ];
+          });
+          setHistory(`${A} ${operator} ${B}`);
+          setDisplay(String(result));
+          setA(null);
+          setOperator(null);
+        }
+      }
+
+      // Operators
+      else if (type === 'operator') {
+        //Don't let start with operator
+        if (A === null && display === '') return;
+
+        // Replace operator instead of stacking multiples
+        if (display === '') {
+          setOperator(val);
+          setHistory((prev) => prev.replace(/[\+\-\×\÷]\s*$/, `${val}`));
+          return;
+        }
+
+        // Calculate expression if keep the calculation
+        if (A !== null && operator !== null) {
+          const B = Number(display);
+          const result = calculateNumbers(A, B, operator);
+
+          if (result === 'Error') {
+            clearScreen();
+            setDisplay('Error');
+            return;
+          }
+
+          setResults((results: any) => {
+            return [
+              ...results,
+              {
+                calc: `${A} ${operator} ${B}`,
+                total: String(result),
+              },
+            ];
+          });
+
+          setA(Number(result));
+          setDisplay('');
+          setHistory(`${result} ${val}`);
+          setOperator(val);
+        } else {
+          // Valid if operator is pressed
+          setA(Number(display));
+          setHistory(`${display} ${val}`);
+          setDisplay('');
+          setOperator(val);
+        }
+      } else {
+        // If is a number or "."
+        if (val === '.') {
+          if (display.includes('.')) return;
+
+          if (display === '' || display === '0') {
+            setDisplay('0.');
+            return;
+          }
+
+          setDisplay((prev) => prev + '.');
+          return;
+        }
+
+        setDisplay((prev) => (prev === '0' ? val : prev + val));
+      }
+    },
+    [display, A, operator],
+  );
+
   // Detects the input by keyboard
   useEffect(() => {
     function handleInput(event: KeyboardEvent) {
       const key = event.key;
-      console.log('key:', key);
 
       // Numbers
       if (!isNaN(Number(key))) {
         handleClick(key, 'number');
       }
+
       // Decimal "."
-      else if (key === '.') {
-        // test later || key === ','
+      else if (key === '.' || key === ',') {
         handleClick('.', 'number');
       }
+
       // Operators
       else if (key === '+') {
         handleClick('+', 'operator');
@@ -75,12 +176,15 @@ export const Calculator = () => {
       } else if (key === '*') {
         handleClick('×', 'operator');
       } else if (key === '/') {
+        event.preventDefault();
         handleClick('÷', 'operator');
       }
+
       // Equal
       else if (key === 'Enter' || key === '=') {
         handleClick('=', 'number');
       }
+
       // Backspace and Clear (esc)
       else if (key === 'Backspace') {
         handleClick('Back', 'action');
@@ -94,105 +198,7 @@ export const Calculator = () => {
     return () => {
       window.removeEventListener('keydown', handleInput);
     };
-  }, [display, A, operator]);
-
-  // Detects the clicks
-  function handleClick(val: string, type: string) {
-    if (display === 'Error') {
-      clearScreen();
-      return;
-    }
-
-    // Clear and Back options
-    if (val === 'Clear') {
-      clearScreen();
-    } else if (val === 'Back') {
-      setDisplay((prev) => prev.slice(0, -1));
-    }
-
-    // Calculate if pressed =
-    else if (val === '=') {
-      if (A !== null && operator !== null && display !== '') {
-        const B = Number(display);
-        const result = calculateNumbers(A, B, operator);
-
-        setResults((results: any) => {
-          return [
-            ...results,
-            {
-              calc: `${A} ${operator} ${B}`,
-              total: String(result),
-            },
-          ];
-        });
-        setHistory(`${A} ${operator} ${B}`);
-        setDisplay(String(result));
-        setA(null);
-        setOperator(null);
-      }
-    }
-
-    // Operators
-    else if (type === 'operator') {
-      //Don't let start with operator
-      if (A === null && display === '') return;
-
-      // Replace operator instead of stacking multiples
-      if (display === '') {
-        setOperator(val);
-        setHistory((prev) => prev.replace(/[\+\-\×\÷]\s*$/, `${val}`));
-        return;
-      }
-
-      // Calculate expression if keep the calculation
-      if (A !== null && operator !== null) {
-        const B = Number(display);
-        const result = calculateNumbers(A, B, operator);
-
-        if (result === 'Error') {
-          clearScreen();
-          setDisplay('Error');
-          return;
-        }
-
-        setResults((results: any) => {
-          return [
-            ...results,
-            {
-              calc: `${A} ${operator} ${B}`,
-              total: String(result),
-            },
-          ];
-        });
-
-        setA(Number(result));
-        setDisplay('');
-        setHistory(`${result} ${val}`);
-        setOperator(val);
-      } else {
-        // Valid if operator is pressed
-        setA(Number(display));
-        setHistory(`${display} ${val}`);
-        setDisplay('');
-        setOperator(val);
-      }
-    } else {
-      // If is a number or "."
-      if (val === '.') {
-        if (display.includes('.')) return;
-
-        if (display === '' || display === '0') {
-          setDisplay('0.');
-          return;
-        }
-
-        setDisplay((prev) => prev + '.');
-        return;
-      }
-
-      setDisplay((prev) => (prev === '0' ? val : prev + val));
-    }
-  }
+  }, [handleClick]);
 
   // Calculate the numbers A and B with the operator
   function calculateNumbers(numA: number, numB: number, operator: string) {
