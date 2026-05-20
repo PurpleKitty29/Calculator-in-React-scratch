@@ -11,7 +11,7 @@ function Error404() {
 
       <p>Oopsie! Looks like you're looking for the void!</p>
       <p>
-        How about we go back to the beggining and use what's available, shall
+        How about we go back to the beginning and use what's available, shall
         we?
       </p>
 
