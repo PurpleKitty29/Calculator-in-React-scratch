@@ -1,7 +1,7 @@
 interface ButtonProps {
   value: string;
   type: string;
-  onClick: () => void;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 function Buttons({ value, type, onClick }: ButtonProps) {

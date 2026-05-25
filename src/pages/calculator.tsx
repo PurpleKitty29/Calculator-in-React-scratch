@@ -186,6 +186,7 @@ export const Calculator = () => {
 
       // Equal
       else if (key === 'Enter' || key === '=') {
+        event.preventDefault();
         handleClick('=', 'number');
       }
 
@@ -235,7 +236,10 @@ export const Calculator = () => {
             key={button.label}
             value={button.label}
             type={button.type}
-            onClick={() => handleClick(button.label, button.type)}
+            onClick={(e) => {
+              e.currentTarget.blur();
+              handleClick(button.label, button.type);
+            }}
           />
         ))}
       </div>
