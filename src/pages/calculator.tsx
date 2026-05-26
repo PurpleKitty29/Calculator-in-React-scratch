@@ -43,6 +43,8 @@ export const Calculator = () => {
     { label: '.', type: 'number' },
     { label: '÷', type: 'operator' },
   ];
+  // Date and time
+  const dateTime = new Date();
 
   // Clears the whole display, history and variables
   function clearScreen() {
@@ -74,6 +76,7 @@ export const Calculator = () => {
         if (A !== null && operator !== null && display !== '') {
           const B = Number(display);
           const result = calculateNumbers(A, B, operator);
+          
 
           setResults((results: any) => {
             return [
@@ -81,6 +84,7 @@ export const Calculator = () => {
               {
                 calc: `${A} ${operator} ${B}`,
                 total: String(result),
+                date: String(dateTime),
               },
             ];
           });
@@ -120,6 +124,7 @@ export const Calculator = () => {
               {
                 calc: `${A} ${operator} ${B}`,
                 total: String(result),
+                date: String(dateTime),
               },
             ];
           });
