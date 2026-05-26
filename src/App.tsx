@@ -8,6 +8,7 @@ import React, { createContext, useState, useEffect } from 'react';
 interface Result {
   calc: string;
   total: string;
+  date: string;
 }
 
 export interface AppContextType {
