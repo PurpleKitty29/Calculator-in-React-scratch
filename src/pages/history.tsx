@@ -3,6 +3,7 @@ import { AppContext, type AppContextType } from '../App';
 
 export const History = () => {
   const { results, setResults } = useContext(AppContext) as AppContextType;
+  const dateTime = new Date();
 
   function deleteHistory() {
     setResults([]);
@@ -26,7 +27,7 @@ export const History = () => {
         {results.map((result) => (
           <div className="historyItem">
             <p>
-              {result.calc} = {result.total}
+              {result.calc} = {result.total} || {String(dateTime)}
             </p>
           </div>
         ))}
