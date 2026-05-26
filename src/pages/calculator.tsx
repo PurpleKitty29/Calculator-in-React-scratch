@@ -44,7 +44,7 @@ export const Calculator = () => {
     { label: '÷', type: 'operator' },
   ];
   // Date and time
-  const dateTime = new Date();
+  let dateTime = new Date();
 
   // Clears the whole display, history and variables
   function clearScreen() {

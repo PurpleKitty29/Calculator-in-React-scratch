@@ -3,7 +3,7 @@ import { AppContext, type AppContextType } from '../App';
 
 export const History = () => {
   const { results, setResults } = useContext(AppContext) as AppContextType;
-  const dateTime = new Date();
+  let dateTime = new Date();
 
   function deleteHistory() {
     setResults([]);
