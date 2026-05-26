@@ -74,7 +74,7 @@ export const Calculator = () => {
         if (A !== null && operator !== null && display !== '') {
           const B = Number(display);
           const result = calculateNumbers(A, B, operator);
-          const dateTime = new Date();
+          const dateTime = new Date().toLocaleString();
 
           setResults((results: any) => {
             return [
@@ -109,7 +109,7 @@ export const Calculator = () => {
         if (A !== null && operator !== null) {
           const B = Number(display);
           const result = calculateNumbers(A, B, operator);
-          const dateTime = new Date();
+          const dateTime = new Date().toLocaleString();
 
           if (result === 'Error') {
             clearScreen();
